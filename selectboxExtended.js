@@ -3,8 +3,11 @@
  *
  * The original SelectBox plugin has to be loaded separately, get it from:
  * http://www.bulgaria-web-developers.com/projects/javascript/selectbox/
+ * 
+ * see README.md and LICENSE.md for details
  *
  * (c) glutrot GmbH, 2015
+ * released under MIT license
  */
 
 ;(function(jQuery){
@@ -150,7 +153,7 @@
                 }
             } else {
                 // skip unknown key codes
-                console.log('selectboxExtended unknown keycode: '+String(keyCode)); // DEBUG
+                //console.log('selectboxExtended unknown keycode: '+String(keyCode)); // DEBUG
                 return;
             }
             
