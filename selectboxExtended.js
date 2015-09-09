@@ -32,6 +32,18 @@
         
         // open selectbox on focus in
         // works only after .sbHolder has been made focusable!
+        // FIXME: Somehow events are completely mangled if this is enabled:
+        //        Focus events occur before click events.
+        //        Click events are causing toggle on original selectbox,
+        //        effectively closing .sbOptions again after focus.
+        //        Opening relies on animation queue.
+        //        Animation queue must not be tempered with!
+        //        If animation queue is stopped/cleared, opening does not work.
+        //        If animation queue gets a function added to attempt to call
+        //        selectbox' open method at the end of all animations, clicking
+        //        doesn't do anything at all (even if nothing gets added to the
+        //        queue!?!? what's the causality?!).
+        /*
         jCreatedHolders.on('focus', function(){
             var jHolder = jQuery(this);
             jHolder.prev('select').selectbox('open');
@@ -41,7 +53,8 @@
             var jHolder = jQuery(this).parent('.sbHolder');
             jHolder.prev('select').selectbox('open');
         });
-        
+        */
+       
         // handle key presses
         var regExpValidCharacters = /^[ a-z0-9\-\+\.\:,_\?\*]$/i;
         jQuery(jCreatedSelectbox).next('.sbHolder').on('keydown', function(e){
